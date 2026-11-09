@@ -1,0 +1,269 @@
+% !TEX program = lualatex
+\documentclass[lualatex,paper=a4paper]{jlreq}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{diffcoeff}
+\usepackage{comment}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage[version=4]{mhchem}
+\usepackage[separate-uncertainty]{siunitx}
+\usepackage[math-style=ISO,warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\usepackage{newunicodechar}
+\usepackage{zref-clever}
+\usepackage{listings}
+\usepackage{xcolor}
+
+%追加した-----------
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{booktabs}
+\usepackage{array}
+%--------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mathtoolsset{showonlyrefs,showmanualtags}
+\newunicodechar{、}{，}
+\newunicodechar{。}{．}
+\NewDocumentCommand\、{}{\string、}
+\NewDocumentCommand\。{}{\string。}
+\NewDocumentCommand\degC{}{\ensuremath{^\circ\symup{C}}}
+\NewDocumentCommand\abs{m}{\left|#1\right|}
+\renewcommand{\lstlistingname}{コード}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setmathfont{NewComputerModernMath}[
+    CharacterVariant = {1}
+]
+\setmathfont{NewComputerModernMath}[
+    range = {scr, bfscr},
+    StylisticSet = 1
+]
+\zcDeclareLanguage[allcaps]{japanese}
+\zcLanguageSetup{japanese}{
+  namesep   = {\nobreak} ,
+  pairsep   = {と} ,
+  listsep   = {、} ,
+  lastsep   = {、および} ,
+  tpairsep  = {および} ,
+  tlistsep  = {、} ,
+  tlastsep  = {、および} ,
+  notesep   = {：} ,
+  rangesep  = {から} ,
+  type = section ,
+    Name-sg = 第 ,
+    Name-pl = 第 ,
+    refbounds = {,,節,} ,
+  type = subsection ,
+    Name-sg = 第 ,
+    Name-pl = 第 ,
+    refbounds = {,,小節,} ,
+  type = subsubsection ,
+    Name-sg = 第 ,
+    Name-pl = 第 ,
+    refbounds = {,,小小節,} ,
+  type = paragraph ,
+    Name-sg = 第 ,
+    Name-pl = 第 ,
+    refbounds = {,,段落,} ,
+  type = appendix ,
+    Name-sg = 付録 ,
+    Name-pl = 付録 ,
+  type = page ,
+    Name-sg = p. ,
+    Name-pl = pp. ,
+    namesep = 〜 ,
+    rangesep = \textendash ,
+    rangetopair = false ,
+  type = figure ,
+    Name-sg = 図 ,
+    Name-pl = 図 ,
+  type = table ,
+    Name-sg = 表 ,
+    Name-pl = 表 ,
+  type = item ,
+    Name-sg = 項目 ,
+    Name-pl = 項目 ,
+  type = footnote ,
+    Name-sg = 脚注 ,
+    Name-pl = 脚注 ,
+  type = endnote ,
+    Name-sg = 後注 ,
+    Name-pl = 後注 ,
+  type = note ,
+    Name-sg = 注記 ,
+    Name-pl = 注記 ,
+  type = equation ,
+    Name-sg = 式 ,
+    Name-pl = 式 ,
+    refbounds = {,(,),} ,
+  type = listing ,
+    Name-sg = コード ,
+    Name-pl = コード ,
+}
+\zcsetup{ lang = japanese, nameinlink = true }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset{%
+  basicstyle={\ttfamily},
+  identifierstyle={\normalsize},
+  keywordstyle={\small\bfseries\color[rgb]{0.000, 0.000, 1.000}},
+  backgroundcolor={\color[gray]{0.98}},
+  stringstyle={\small\ttfamily\color[rgb]{0.639, 0.082, 0.082}},
+  commentstyle={\small\ttfamily\color[rgb]{0.000, 0.502, 0.000}},
+  frame={tb},
+  breaklines=true,
+  showstringspaces=false,
+  columns=fixed,
+  basewidth=0.5em,
+  numbers=left,
+  xrightmargin=0\zw,
+  xleftmargin=3\zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1\zw,
+  lineskip=-0.5ex
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\jlreqsetup{
+    caption_font=\mcfamily,
+    caption_label_font=\mcfamily,
+    caption_label_format={#1:},
+    caption_after_label_space=0.5\zw
+}
+\ModifyHeading{section}{
+    font=\normalsize\bfseries,
+    lines=2,
+    after_lines=0
+}
+\ModifyHeading{subsection}{
+    font=\normalsize\bfseries,
+    lines=2,
+    after_lines=0
+}
+
+
+% \title{でんサポ}
+% \author{システム提案書}
+% \date{\today}
+
+
+%----新しく追加-----
+
+%\pagestyle{empty}
+% 表紙の文字サイズ設定(ここの数値を変えるだけで調整できます)
+\newcommand{\teamnamesize}{\fontsize{16}{22}\selectfont}
+\newcommand{\teamname}{UniCo}
+
+%sectionの文字サイズ（統一）
+% 見出しの文字サイズ設定(ここを変えるだけで調整できます)
+\newcommand{\sectionsize}{\fontsize{16}{24}\selectfont}
+\newcommand{\subsectionsize}{\fontsize{13}{20}\selectfont}
+
+\ModifyHeading{section}{
+    font=\sectionsize\gtfamily\bfseries,
+    lines=2,
+    after_lines=0
+}
+\ModifyHeading{subsection}{
+    font=\subsectionsize\gtfamily\bfseries,
+    lines=2,
+    after_lines=0
+}
+
+%現状の課題に対する提案色分け
+\definecolor{prob}{RGB}{255,228,225}   % 課題
+\definecolor{sol}{RGB}{220,235,250}    % 機能
+\definecolor{eff}{RGB}{225,245,225}    % 効果
+\definecolor{adm}{RGB}{240,240,240}    % 管理者
+
+%URLの色変更
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,     % 目次(と内部リンク全般)を黒に
+    citecolor=orange,
+    urlcolor=blue            % \href や \url の色
+}
+
+%itemize環境の段落ごとの調節
+%\renewcommand{\labelitemi}{}                  % 1段目は記号なし
+\renewcommand{\labelitemii}{}      % 2段目は記号なし
+\renewcommand{\labelitemiii}{〇}    % 3段目は「–」
+
+% 「課題1.1」のようにクリックで該当項目へ飛ぶリンクを作るマクロ
+\newcommand{\issueref}[1]{\hyperref[#1]{課題\ref*{#1}}}
+
+%------------------
+
+\begin{document}
+
+%---GitHubの設定---
+\input{chapters/database-kako}
+\input{chapters/function1-omine}
+\input{chapters/function2-sen}
+\input{chapters/introduction-ogayuzu}
+\input{chapters/maintenance-ogayuzu}
+\input{chapters/network-ogayuzu}
+\input{chapters/security-ogayuzu}
+\input{chapters/ui-aya}
+\input{chapters/usageFlow-ogayuzu}
+%-----------------
+
+\begin{titlepage}
+  \centering
+  \vspace*{35mm}
+  % 日本語タイトル
+  {\fontsize{30}{38}\selectfont\gtfamily\bfseries システム提案書\par}
+  \vspace{2mm}
+  % 英語名(欧文ゴシック・太字)
+  %{\fontsize{30}{36}\selectfont\sffamily\bfseries SceneTrip\par}
+  \vspace{30mm}
+  % 文書名
+  {\fontsize{50}{34}\selectfont\gtfamily\bfseries でんサポ\par}
+  \vspace{45mm}
+  % 版数
+  {\fontsize{24}{24}\selectfont\gtfamily  第1.0版\par}
+  \vspace{10mm}
+  % 日付
+  {\fontsize{20}{20}\selectfont\gtfamily\today\par}
+  \vspace{15mm}
+  % チーム名(ゴシック体)
+  {\teamnamesize\gtfamily\teamname\par}
+  \vfill
+\end{titlepage}
+
+\setcounter{page}{1}
+\pagestyle{plain}
+% ここから 1 ページ目として数える
+
+% --- 全体の総合タイトル
+%\maketitle
+
+% --- 目次の自動生成 ---
+{\fontsize{14}{24}\selectfont\gtfamily
+\tableofcontents
+}
+\clearpage
+
+
+
+\phantomsection
+\section*{参考文献}
+\addcontentsline{toc}{section}{参考文献}
+
+\begin{enumerate}
+  %著者名.ホームページ名.URL.閲覧日.
+  %高齢社会白書（現状の課題文中：冒頭）
+  \item \hypertarget{ref:kourei2026}{内閣府本府．\href{https://www8.cao.go.jp/kourei/whitepaper/w-2026/html/zenbun/s1_1_1.html}{令和8年版高齢社会白書（全体版）}．閲覧日：令和8年10/15}
+  %情報通信白書|インターネット（現状の課題：図１,３）
+  \item \hypertarget{ref:soumu2026}{総務省，\href{https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r08/html/nd21b120.html}{令和8年度版 情報通信白書（年次報告書）｜インターネット}．閲覧日：令和8年10/15}
+  %
+  \item \hypertarget{ref:soumu2021}{総務省，\href{https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r03/html/nd111430.html}{令和3年度版 情報通信白書（年次報告書）｜デジタル活動支援}．閲覧日：令和8年10/15}
+  %情報通信白書|デジタル活用の動向（現状の課題：図２）
+  \item \hypertarget{ref:soumu2026b}{総務省，\href{https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r08/html/nd21b110.html}{令和8年度版 情報通信白書（年次報告書）｜情報通信機器・端末}．閲覧日：令和8年10/15}
+\end{enumerate}
+
+\end{document}
