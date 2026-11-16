@@ -19,7 +19,7 @@
 \usepackage{zref-clever}
 \usepackage{listings}
 \usepackage{xcolor}
-
+\usepackage{tabularx}
 %追加した-----------
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning}
@@ -198,19 +198,10 @@
 
 %------------------
 
-\begin{document}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
 
-%---GitHubの設定---
-\input{chapters/database-kako}
-\input{chapters/function1-omine}
-\input{chapters/function2-sen}
-\input{chapters/introduction-ogayuzu}
-\input{chapters/maintenance-ogayuzu}
-\input{chapters/network-ogayuzu}
-\input{chapters/security-ogayuzu}
-\input{chapters/ui-aya}
-\input{chapters/usageFlow-ogayuzu}
-%-----------------
+\begin{document}
 
 \begin{titlepage}
   \centering
@@ -248,6 +239,18 @@
 }
 \clearpage
 
+%---GitHubの設定---
+\input{chapters/database-kako}
+
+\input{chapters/function1-omine}
+\input{chapters/function2-sen}
+\input{chapters/introduction-ogayuzu}
+\input{chapters/maintenance-ogayuzu}
+\input{chapters/network-ogayuzu}
+\input{chapters/security-ogayuzu}
+\input{chapters/ui-aya}
+\input{chapters/usageFlow-ogayuzu}
+%-----------------
 
 
 \phantomsection
@@ -255,15 +258,7 @@
 \addcontentsline{toc}{section}{参考文献}
 
 \begin{enumerate}
-  %著者名.ホームページ名.URL.閲覧日.
-  %高齢社会白書（現状の課題文中：冒頭）
-  \item \hypertarget{ref:kourei2026}{内閣府本府．\href{https://www8.cao.go.jp/kourei/whitepaper/w-2026/html/zenbun/s1_1_1.html}{令和8年版高齢社会白書（全体版）}．閲覧日：令和8年10/15}
-  %情報通信白書|インターネット（現状の課題：図１,３）
-  \item \hypertarget{ref:soumu2026}{総務省，\href{https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r08/html/nd21b120.html}{令和8年度版 情報通信白書（年次報告書）｜インターネット}．閲覧日：令和8年10/15}
-  %
-  \item \hypertarget{ref:soumu2021}{総務省，\href{https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r03/html/nd111430.html}{令和3年度版 情報通信白書（年次報告書）｜デジタル活動支援}．閲覧日：令和8年10/15}
-  %情報通信白書|デジタル活用の動向（現状の課題：図２）
-  \item \hypertarget{ref:soumu2026b}{総務省，\href{https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r08/html/nd21b110.html}{令和8年度版 情報通信白書（年次報告書）｜情報通信機器・端末}．閲覧日：令和8年10/15}
+\item 参考文献１
 \end{enumerate}
 
 \end{document}
