@@ -590,5 +590,241 @@
 
 \subsection{管理者画面}
 % =================================
+% 画像はすべて images/UI_Screen/manager/ 内に配置する。
 
+<<<<<<< HEAD
+\subsubsection{ホーム画面}
+
+図\ref{fig:manager_home}は、ログイン後に最初に表示される管理者向けのホーム画面である。対応が必要な件数と主要指標を一覧で確認でき、縦スクロールによって画面下部の推移グラフも確認することができる。画面上部には画面タイトルとログイン中のユーザー名（システム管理者）が表示され、ユーザー名をタップするとアカウント情報を確認できる。「対応待ち」エリアには、AI要確認・通報・問い合わせの未対応件数が3枚のカードで表示される。件数が0件より多い場合は赤色で強調され、カード内の「開いて対応」をタップすると該当する一覧画面へ遷移する。「主要指標」エリアには全投稿数や今月の投稿数が表示される。画面下部のタブバーでは、ホーム・投稿・通報・問い合わせ・メニューの5つの画面を切り替えることができる。投稿・通報・問い合わせのアイコンには未対応件数がバッジで表示され、現在表示中のタブは青色で強調される。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/manager/home.png}
+  \caption{管理者ホーム画面}
+  \label{fig:manager_home}
+\end{figure}
+
+
+\subsubsection{投稿対応画面}
+
+図\ref{fig:manager_post1}は、下部タブの「投稿」をタップすると表示される投稿管理画面である。AIが解析した投稿を優先度ごとに確認することができ、投稿をタップすると対応詳細画面へ遷移する。「要対応」「注意」「確認」のタブを切り替えることで、該当する投稿を確認できる。各タブには該当件数が表示され、収まらない分は横スクロールで表示される。投稿リストには、タイトル、投稿ID、AI判定ラベル、判定理由、投稿者名、投稿日時、通報件数が表示される。
+
+図\ref{fig:manager_post2}は、投稿の対応詳細画面である。画面上部には「AI：要対応」などのラベルで投稿全体の総合判定が表示される。検出項目リストには、AIが検出した問題が重要度（要対応・注意）、問題の種類、該当箇所、指摘内容とともに表示される。判定の根拠になった語句は黄色のタグで表示される。
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/post1.png}
+    \caption{投稿管理画面}
+    \label{fig:manager_post1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/post2.png}
+    \caption{投稿対応詳細画面}
+    \label{fig:manager_post2}
+  \end{subfigure}
+  \caption{投稿対応画面}
+  \label{fig:manager_post}
+\end{figure}
+
+
+\subsubsection{通報管理画面}
+
+図\ref{fig:manager_report1}は、下部タブの「通報」をタップすると表示される通報管理画面である。ユーザーから届いた通報を状態ごとに確認でき、通報をタップすると詳細画面へ遷移する。「未対応」「対応済み」「すべて」のタブを切り替えることができ、各タブには該当件数が表示される。収まらない分は横スクロールで表示される。通報リストには、通報理由、通報対象のタイトルと投稿ID、通報した人、通報日時、状態（未対応など）が表示される。
+
+図\ref{fig:manager_report2}は、通報の詳細画面である。画面上部には、通報の理由（迷惑行為・宣伝など）、通報した人、通報日時、状態が表示される。また、通報者が入力した内容と、通報された投稿のタイトル、投稿ID、本文が表示される。画面下部の「問題なし」をタップすると、通報を問題なしとして処理し、一覧へ戻る。「対応する」をタップすると、投稿の非公開や投稿者への連絡などの対応を選ぶ画面へ遷移する。
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/report1.png}
+    \caption{通報管理画面}
+    \label{fig:manager_report1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/report2.png}
+    \caption{通報詳細画面}
+    \label{fig:manager_report2}
+  \end{subfigure}
+  \caption{通報管理画面}
+  \label{fig:manager_report}
+\end{figure}
+
+
+\subsubsection{お問い合わせ管理画面}
+
+図\ref{fig:manager_question}は、下部タブの「問い合わせ」をタップすると表示されるお問い合わせ管理画面である。ユーザーから届いた問い合わせを状態ごとに確認でき、問い合わせをタップすると詳細画面へ遷移する。画面上部には画面タイトルとログイン中のユーザー名が表示される。「未対応」「対応中」「対応済み」のタブを切り替えることができ、各タブには該当件数が表示される。収まらない分は横スクロールで表示される。問い合わせリストには、件名、送った人（ユーザーID）、種類（使い方・広告・提携など）、受信日時、状態（未対応など）が表示される。
+
+図\ref{fig:manager_question2}は、問い合わせの詳細画面である。画面上部には、送った人、種類、受信日時、状態が表示される。問い合わせの内容として、ユーザーが入力した内容が表示される。回答エリアでは、返信メッセージと対応内容（運営の記録）を入力できる。返信メッセージはユーザーへ送信され、対応内容は運営側の記録として保存される。画面下部の「確認のみで完了」をタップすると、返信せずに対応済みにして一覧へ戻る。「回答を送る」をタップすると、入力した返信メッセージをユーザーへ送信する。
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/question.png}
+    \caption{お問い合わせ管理画面}
+    \label{fig:manager_question}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/question2.png}
+    \caption{お問い合わせ詳細画面}
+    \label{fig:manager_question2}
+  \end{subfigure}
+  \caption{お問い合わせ管理画面}
+  \label{fig:manager_questions}
+\end{figure}
+
+
+\subsubsection{メニュー画面}
+
+図\ref{fig:manager_menu}は、下部タブの「メニュー」をタップすると表示される画面である。ホーム・投稿・通報・問い合わせ以外の管理機能へ移動することができる。画面上部には画面タイトルとログイン中のユーザー名が表示される。メニューリストには「利用者管理」「お知らせ・イベント」「広告・タイアップ」「統計・ランキング」「バージョン管理」「権限設定」が表示され、各項目をタップすると、それぞれの管理画面へ遷移する。「開発者用の表示にもどす」をタップすると、開発者向けの表示へ切り替えることができる。アプリ情報にはアプリ名とバージョンが表示される。画面下部のタブバーでは「メニュー」タブが青色で強調され、投稿・通報・問い合わせのアイコンには未対応件数がバッジで表示される。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/manager/menue.png}
+  \caption{メニュー画面}
+  \label{fig:manager_menu}
+\end{figure}
+
+
+\subsubsection{利用者管理画面}
+
+図\ref{fig:manager_user1}は、メニュー画面の「利用者管理」をタップすると表示される利用者管理画面である。利用者を検索・絞り込みで探すことができ、利用者をタップすると詳細画面へ遷移する。画面上部には画面タイトルとログイン中のユーザー名が表示され、左上の「＜」をタップするとメニュー画面へ戻る。ニックネームを入力して「検索」をタップすると、一致する利用者だけが一覧に表示される。「すべて」「学習者」「投稿者」などのタブを切り替えることができ、各タブには該当人数が表示される。収まらない分は横スクロールで表示される。利用者リストには、ニックネーム、利用者ID、種別、電話番号、投稿数、通報数、利用状態が表示される。
+
+図\ref{fig:manager_user2}は、利用者の詳細画面である。画面上部には、ID、本名、電話番号、生年月日、種別、権限、登録日、利用状態が表示される。利用状況として、投稿数、通報された数、警告数が表示される。画面下部の「対応する」をタップすると、対応処理画面へ遷移する。
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/user1.png}
+    \caption{利用者管理画面}
+    \label{fig:manager_user1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/user2.png}
+    \caption{利用者詳細画面}
+    \label{fig:manager_user2}
+  \end{subfigure}
+  \caption{利用者管理画面}
+  \label{fig:manager_users}
+\end{figure}
+
+
+\subsubsection{お知らせ・イベント管理画面}
+
+図\ref{fig:manager_info}は、メニュー画面の「お知らせ・イベント」をタップすると表示されるお知らせ・イベント管理画面である。これまでに作成したお知らせやイベントを確認でき、「新しく作る」をタップすると作成画面へ遷移する。画面上部には画面タイトルとログイン中のユーザー名（システム管理者）が表示され、左上の「＜」をタップするとメニュー画面へ戻る。お知らせ・イベントリストには、タイトル、種類、掲載期間、閲覧数、公開状態が表示される。画面下部の「新しく作る」をタップすると、お知らせ作成画面へ遷移する。
+
+図\ref{fig:manager_info2}は、お知らせ・イベントの作成画面である。種類は「お知らせ」「イベント」「コラム」「公式情報」から1つ選択する。タイトルと本文を入力し、画像は「ファイルの選択」から任意で追加できる。また、掲載期間などの公開設定も入力する。画面下部の「確認する」をタップすると、入力内容の確認画面へ遷移する。
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/info.png}
+    \caption{お知らせ・イベント一覧画面}
+    \label{fig:manager_info}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/info2.png}
+    \caption{お知らせ・イベント作成画面}
+    \label{fig:manager_info2}
+  \end{subfigure}
+  \caption{お知らせ・イベント管理画面}
+  \label{fig:manager_infos}
+\end{figure}
+
+
+\subsubsection{広告・タイアップ管理画面}
+
+図\ref{fig:manager_ad}は、メニュー画面の「広告・タイアップ」をタップすると表示される広告・タイアップ管理画面である。登録済みの広告やタイアップを確認でき、「新しく登録」をタップすると登録画面へ遷移する。画面上部には画面タイトルとログイン中のユーザー名（システム管理者）が表示され、左上の「＜」をタップするとメニュー画面へ戻る。広告・タイアップリストには、企業名、認定ラベル、掲載内容、掲載期間、掲載状態（掲載中・終了など）が表示される。画面下部の「新しく登録」をタップすると、登録画面へ遷移する。
+
+図\ref{fig:manager_ad2}は、広告・タイアップの登録画面である。入力欄に企業名、掲載内容、リンク先（URL）を入力する。掲載期間は、掲載開始日と掲載終了日を日付で選択する。画面下部の「確認する」をタップすると、入力内容の確認画面へ遷移する。
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/ad.png}
+    \caption{広告・タイアップ一覧画面}
+    \label{fig:manager_ad}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/ad2.png}
+    \caption{広告・タイアップ登録画面}
+    \label{fig:manager_ad2}
+  \end{subfigure}
+  \caption{広告・タイアップ管理画面}
+  \label{fig:manager_ads}
+\end{figure}
+
+
+\subsubsection{統計・ランキング画面}
+
+図\ref{fig:manager_analize}は、メニュー画面の「統計・ランキング」をタップすると表示される画面である。利用状況や投稿数の推移を、数値とグラフで確認することができる。縦スクロールによって画面下部のグラフも確認できる。画面上部には画面タイトルとログイン中のユーザー名が表示され、左上の「＜」をタップするとメニュー画面へ戻る。指標カードには、登録者数（今月の増加数）、月間の利用者数（先月比）、1日の利用者数（直近7日の平均）、今月の投稿数（AI指摘の割合）が表示される。「投稿数・日別」グラフには日ごとの投稿数の推移が折れ線グラフで表示され、「投稿数・月別」グラフには月ごとの投稿数が棒グラフで表示される。画面下部のタブバーでは、投稿・通報・問い合わせのアイコンに未対応件数がバッジで表示される。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/manager/analize.png}
+  \caption{統計・ランキング画面}
+  \label{fig:manager_analize}
+\end{figure}
+
+
+\subsubsection{バージョン管理画面}
+
+図\ref{fig:manager_ver1}は、メニュー画面の「バージョン管理」をタップすると表示されるバージョン管理画面である。現在のバージョンとこれまでの履歴を確認でき、「新しいバージョンを登録」をタップすると登録画面へ遷移する。画面上部には画面タイトルとログイン中のユーザー名が表示され、左上の「＜」をタップするとメニュー画面へ戻る。現在のバージョンには、公開中のバージョン番号、公開日、変更内容の要約が表示される。「これまでのバージョン」リストには、バージョン番号、公開日、変更内容の要約が新しい順に表示され、最新のバージョンには「最新」ラベルが表示される。
+
+図\ref{fig:manager_ver2}は、新しいバージョンの登録画面である。画面上部には現在のバージョンが表示され、新しい番号との違いを確認できる。入力欄にバージョン番号と変更内容を入力し、更新ファイルは「ファイルの選択」から追加する。画面下部の「確認して登録」をタップすると、入力内容を確認したうえで新しいバージョンとして登録する。
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/ver1.png}
+    \caption{バージョン管理画面}
+    \label{fig:manager_ver1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/ver2.png}
+    \caption{新バージョン登録画面}
+    \label{fig:manager_ver2}
+  \end{subfigure}
+  \caption{バージョン管理画面}
+  \label{fig:manager_versions}
+\end{figure}
+
+
+\subsubsection{権限設定画面}
+
+図\ref{fig:manager_rank}は、メニュー画面の「権限設定」をタップすると表示される画面である。管理者の種類ごとに、操作できる機能の範囲を確認することができる。縦スクロールによって画面下部の権限も確認できる。画面上部には画面タイトルとログイン中のユーザー名が表示され、左上の「＜」をタップするとメニュー画面へ戻る。
+
+注意書きバナーには、名前・電話番号・生年月日などの個人情報は「システム管理者」だけが見られること、ほかの権限では見られないこと、電話番号は一部が伏せて表示されることが案内される。権限カードには権限の名前が表示され、自分の権限には「いまの権限」ラベルが付けられる。操作できる機能として、権限ごとにダッシュボード、投稿管理、通報への対応、利用者の一覧・詳細、お知らせ・イベント、広告・タイアップ、統計・ランキング、バージョン管理などの操作可否が表示される。「見るだけ」など、権限が限定されている項目はラベルで区別される。画面下部のタブバーでは、投稿・通報・問い合わせのアイコンに未対応件数がバッジで表示される。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/manager/rank.png}
+  \caption{権限設定画面}
+  \label{fig:manager_rank}
+\end{figure}
+
+\end{document}
+=======
 % 管理者画面の説明・画像をここに追加
+>>>>>>> origin/main
