@@ -1,2 +1,326 @@
-% !TEX root = ../G-design.tex
-\section{データベース設計}
+\section{データベース・ネットワーク設計}
+
+\subsection{データベース}
+
+本システムで用いる全てのデータベースのER図は
+図\ref{fig:densapo_er}の通りである．
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=\textwidth,
+        height=0.75\textheight,
+        keepaspectratio
+    ]{chapters/images/ER.png}
+    \caption{本システムにおけるデータベースのER図}
+    \label{fig:densapo_er}
+\end{figure}
+
+本システムでは，PostgreSQLを用いる．
+全てのデータリストは以下の表に示す．
+ここでは，テーブル名とカラム名はSQLで使用するために
+英語で表記する．
+また，NOT NULLはNNと略称する．
+
+% 表のレイアウト設定
+\begingroup
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+
+
+% ========================================
+% ユーザー
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{ユーザー（users）}
+    \label{tab:db_users}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & user\_id & bigint & $\bigcirc$ & ユーザーID（自動連番） \\ \hline
+        & & display\_name & varchar(64) & $\bigcirc$ & 表示名 \\ \hline
+        & & email & varchar(255) & $\bigcirc$ & メールアドレス（一意） \\ \hline
+        & & password\_hash & varchar(255) & $\bigcirc$ & ハッシュ化したパスワード \\ \hline
+        & & role & varchar(20) & $\bigcirc$ & 権限（一般，管理者） \\ \hline
+        & & account\_status & varchar(20) & $\bigcirc$ & 会員状態（有効，停止，退会） \\ \hline
+        & & certification\_status & varchar(20) & $\bigcirc$ & 認定状態（未認定，認定） \\ \hline
+        & & created\_at & timestamp & $\bigcirc$ & 登録日時 \\ \hline
+        & & updated\_at & timestamp & $\bigcirc$ & 更新日時 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% ユーザー設定
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{ユーザー設定（user\_settings）}
+    \label{tab:db_user_settings}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & $\bigcirc$ & user\_id & bigint & $\bigcirc$ & ユーザーID \\ \hline
+        & & notification\_enabled & boolean & $\bigcirc$ & 通知の有効・無効 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% カテゴリ
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{カテゴリ（categories）}
+    \label{tab:db_categories}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & category\_id & bigint & $\bigcirc$ & カテゴリID（自動連番） \\ \hline
+        & & category\_name & varchar(100) & $\bigcirc$ & カテゴリ名 \\ \hline
+        & & display\_order & integer & $\bigcirc$ & 表示順 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% 投稿
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{投稿（posts）}
+    \label{tab:db_posts}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & post\_id & bigint & $\bigcirc$ & 投稿ID（自動連番） \\ \hline
+        & $\bigcirc$ & author\_id & bigint & $\bigcirc$ & 投稿者のユーザーID \\ \hline
+        & $\bigcirc$ & category\_id & bigint & $\bigcirc$ & カテゴリID \\ \hline
+        & & title & varchar(200) & $\bigcirc$ & 投稿タイトル \\ \hline
+        & & description & text & & 投稿の説明文 \\ \hline
+        & & status & varchar(20) & $\bigcirc$ & 公開状態（下書き，公開，非公開，削除） \\ \hline
+        & & created\_at & timestamp & $\bigcirc$ & 作成日時 \\ \hline
+        & & updated\_at & timestamp & $\bigcirc$ & 更新日時 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% 投稿手順
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{投稿手順（post\_steps）}
+    \label{tab:db_post_steps}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & step\_id & bigint & $\bigcirc$ & 手順ID（自動連番） \\ \hline
+        & $\bigcirc$ & post\_id & bigint & $\bigcirc$ & 投稿ID \\ \hline
+        & & step\_number & integer & $\bigcirc$ & 手順番号 \\ \hline
+        & & instruction & text & $\bigcirc$ & 操作手順の説明 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% 投稿メディア
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{投稿メディア（post\_media）}
+    \label{tab:db_post_media}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & media\_id & bigint & $\bigcirc$ & メディアID（自動連番） \\ \hline
+        & $\bigcirc$ & post\_id & bigint & $\bigcirc$ & 投稿ID \\ \hline
+        & $\bigcirc$ & step\_id & bigint & & 手順ID \\ \hline
+        & & media\_type & varchar(20) & $\bigcirc$ & メディア種別（画像，動画） \\ \hline
+        & & file\_path & varchar(500) & $\bigcirc$ & ファイルの保存先 \\ \hline
+        & & display\_order & integer & $\bigcirc$ & 表示順 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% タグ
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{タグ（tags）}
+    \label{tab:db_tags}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & tag\_id & bigint & $\bigcirc$ & タグID（自動連番） \\ \hline
+        & & tag\_name & varchar(100) & $\bigcirc$ & 検索用タグ名（一意） \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% 投稿タグ関連
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{投稿タグ関連（post\_tags）}
+    \label{tab:db_post_tags}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & $\bigcirc$ & post\_id & bigint & $\bigcirc$ & 投稿ID \\ \hline
+        $\bigcirc$ & $\bigcirc$ & tag\_id & bigint & $\bigcirc$ & タグID \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% 質問
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{質問（questions）}
+    \label{tab:db_questions}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & question\_id & bigint & $\bigcirc$ & 質問ID（自動連番） \\ \hline
+        & $\bigcirc$ & asker\_id & bigint & $\bigcirc$ & 質問者のユーザーID \\ \hline
+        & $\bigcirc$ & post\_id & bigint & & 投稿ID \\ \hline
+        & & question\_text & text & $\bigcirc$ & 質問内容 \\ \hline
+        & & status & varchar(20) & $\bigcirc$ & 質問状態（受付中，回答済，終了） \\ \hline
+        & & created\_at & timestamp & $\bigcirc$ & 質問日時 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% 回答
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{回答（answers）}
+    \label{tab:db_answers}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & answer\_id & bigint & $\bigcirc$ & 回答ID（自動連番） \\ \hline
+        & $\bigcirc$ & question\_id & bigint & $\bigcirc$ & 質問ID \\ \hline
+        & $\bigcirc$ & responder\_id & bigint & $\bigcirc$ & 回答者のユーザーID \\ \hline
+        & & answer\_text & text & $\bigcirc$ & 回答内容 \\ \hline
+        & & created\_at & timestamp & $\bigcirc$ & 回答日時 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% 通知
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{通知（notifications）}
+    \label{tab:db_notifications}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & notification\_id & bigint & $\bigcirc$ & 通知ID（自動連番） \\ \hline
+        & $\bigcirc$ & user\_id & bigint & $\bigcirc$ & 通知先のユーザーID \\ \hline
+        & & title & varchar(200) & $\bigcirc$ & 通知タイトル \\ \hline
+        & & message & text & $\bigcirc$ & 通知本文 \\ \hline
+        & & is\_read & boolean & $\bigcirc$ & 既読状態 \\ \hline
+        & & created\_at & timestamp & $\bigcirc$ & 通知日時 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% 通報
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{通報（reports）}
+    \label{tab:db_reports}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & report\_id & bigint & $\bigcirc$ & 通報ID（自動連番） \\ \hline
+        & $\bigcirc$ & reporter\_id & bigint & $\bigcirc$ & 通報者のユーザーID \\ \hline
+        & $\bigcirc$ & target\_post\_id & bigint & & 通報対象の投稿ID \\ \hline
+        & $\bigcirc$ & target\_user\_id & bigint & & 通報対象のユーザーID \\ \hline
+        & $\bigcirc$ & handled\_by & bigint & & 対応管理者のユーザーID \\ \hline
+        & & reason & text & $\bigcirc$ & 通報理由 \\ \hline
+        & & status & varchar(20) & $\bigcirc$ & 対応状態（未対応，対応中，完了） \\ \hline
+        & & created\_at & timestamp & $\bigcirc$ & 通報日時 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% 問い合わせ
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{問い合わせ（inquiries）}
+    \label{tab:db_inquiries}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & inquiry\_id & bigint & $\bigcirc$ & 問い合わせID（自動連番） \\ \hline
+        & $\bigcirc$ & user\_id & bigint & $\bigcirc$ & 問い合わせを行ったユーザーID \\ \hline
+        & $\bigcirc$ & handled\_by & bigint & & 対応管理者のユーザーID \\ \hline
+        & & subject & varchar(200) & $\bigcirc$ & 問い合わせ件名 \\ \hline
+        & & message & text & $\bigcirc$ & 問い合わせ内容 \\ \hline
+        & & status & varchar(20) & $\bigcirc$ & 対応状態（未対応，対応中，完了） \\ \hline
+        & & created\_at & timestamp & $\bigcirc$ & 受付日時 \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+% ========================================
+% バージョン管理
+% ========================================
+
+\begin{table}[H]
+    \centering
+    \caption{バージョン管理（app\_versions）}
+    \label{tab:db_app_versions}
+    \small
+    \begin{tabularx}{\textwidth}{|c|c|l|l|c|X|}
+        \hline
+        PK & FK & カラム名 & 型 & NN & カラム内容 \\ \hline
+        $\bigcirc$ & & version\_id & bigint & $\bigcirc$ & バージョンID（自動連番） \\ \hline
+        & & version\_number & varchar(30) & $\bigcirc$ & バージョン番号（一意） \\ \hline
+        & & release\_notes & text & & 更新内容 \\ \hline
+        & & released\_at & timestamp & & 公開日時 \\ \hline
+    \end{tabularx}
+\end{table}
+
+\endgroup
