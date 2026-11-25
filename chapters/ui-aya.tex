@@ -1,6 +1,3 @@
-% !TEX root = ../G-design.tex
-% !TEX program = lualatex
-
 % =================================
 \section{画面遷移図}
 % =================================
@@ -28,7 +25,14 @@
 \end{figure}
 
 \subsection{管理者画面}
+管理者画面の画面遷移図を以下の図\ref{fig:admin}に示す。
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/admin.png}
+  \caption{管理者画面遷移図}
+  \label{fig:admin}
+\end{figure}
 
 % =================================
 \section{利用者向け画面}
@@ -429,163 +433,159 @@
 
 \subsubsection{ホーム画面}
 
-図\ref{fig:teacher_home}は、投稿者のホーム画面である。ポイント順の投稿者ランキングと、自分の順位が表示された今月の投稿者ランキングが表示される。また、最近学習者によく調べられているワードなどを確認することができる。
+図\ref{fig:ad_home}は、管理者のホーム画面である。上部のダッシュボードには、AI要確認・通報・問い合わせの未対応件数と、全投稿数・利用者数・今月の投稿数・月間アクティブ数が表示される。未対応件数をクリックすると、該当する一覧画面へ遷移する。中央には「ユーザ管理」「投稿管理」「詳細管理」の3つのパネルが配置され、未対応がある場合は件数が表示される。右上には現在の権限が表示される。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/home.png}
-  \caption{投稿者ホーム画面}
-  \label{fig:teacher_home}
+  \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/home.png}
+  \caption{管理者ホーム画面}
+  \label{fig:ad_home}
 \end{figure}
 
-\subsubsection{ヘルプ画面}
 
-図\ref{fig:teacher_help}は、アプリの使い方などを確認できる画面である。学習者画面と同様に、チュートリアルやよくある質問を確認できるほか、運営に対して問い合わせを送信することができる。
+\subsubsection{メニュー}
+
+図\ref{fig:ad_menu}は、左上のメニューボタンをクリックすると表示されるメニューである。「権限」と「設定」の各画面へ遷移することができる。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/help.png}
-  \caption{投稿者ヘルプ画面}
-  \label{fig:teacher_help}
+  \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/menu.png}
+  \caption{メニュー}
+  \label{fig:ad_menu}
 \end{figure}
 
-\subsubsection{お知らせ画面}
 
-図\ref{fig:teacher_info}は、運営からのお知らせや、学習者からのコメントなどの通知を一覧で確認できる画面である。
+% =================================
+\subsection{ユーザ管理画面}
+% =================================
+
+\subsubsection{ユーザ管理（パネル一覧）画面}
+
+図\ref{fig:ad_user_panel}は、ホーム画面で「ユーザ管理」をクリックすると表示される画面である。「学習者・投稿者管理」と「問い合わせ管理」のパネルが配置され、クリックするとそれぞれの画面へ遷移する。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/info.png}
-  \caption{投稿者お知らせ画面}
-  \label{fig:teacher_info}
+  \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/user_panel.png}
+  \caption{ユーザ管理（パネル一覧）画面}
+  \label{fig:ad_user_panel}
 \end{figure}
 
-\subsubsection{設定画面}
 
-図\ref{fig:teacher_setting}は、文字の大きさ、画面の色、音量、通知などの設定を行う画面である。各項目の設定方法は学習者画面と共通である。
+\subsubsection{学習者・投稿者管理画面}
+
+図\ref{fig:ad_user}は、学習者と投稿者をまとめて一覧表示する画面である。ニックネーム・ID・電話番号で検索することができ、「すべて」「学習者」「投稿者」のフィルタで種別ごとに絞り込むことができる。一覧には種別・電話番号・投稿数・通報数・利用状態が表示され、行をクリックすると利用者詳細画面へ遷移する。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/setting.png}
-  \caption{投稿者設定画面}
-  \label{fig:teacher_setting}
+  \includegraphics[width=0.8\linewidth]{chapters/images/UI_Screen/admin/user.png}
+  \caption{学習者・投稿者管理画面}
+  \label{fig:ad_user}
 \end{figure}
 
-\subsubsection{投稿作成画面}
-
-図\ref{fig:teacher_create}は、投稿の作成方法を選択する画面である。「AIで生成」をタップするとAI投稿生成画面へ遷移し、「自分で入力」をタップすると手順ごとに投稿を作成する画面へ遷移する。また、「下書きの続きを書く」をタップすると、下書き一覧から編集する投稿を選択できる。
+図\ref{fig:ad_user2}は、フィルタで「投稿者」を選択したときの表示である。投稿者のみが一覧に表示される。フィルタには種別ごとの人数が表示される。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/create.png}
-  \caption{投稿作成画面}
-  \label{fig:teacher_create}
+  \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/user2.png}
+  \caption{学習者・投稿者管理画面（投稿者で絞り込み）}
+  \label{fig:ad_user2}
 \end{figure}
 
-図\ref{fig:teacher_AIcreate}は、AI投稿生成画面である。メモ書き入力欄に任意の形式で投稿内容を入力すると、AIによって投稿内容を自動で生成することができる。複数枚の画像を挿入することもでき、追加した画像をタップすると番号が付けられ、自動で現在のカーソル位置に挿入される。「生成」をタップすると投稿内容確認画面へ遷移し、生成された内容を修正することができる。
+図\ref{fig:ad_user_mask}は、システム管理者以外の権限で開いたときの表示である。本名や電話番号は伏せ字で表示され、電話番号での検索もできない。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/AIcreate.png}
-  \caption{AI投稿生成画面}
-  \label{fig:teacher_AIcreate}
+  \includegraphics[width=0.8\linewidth]{chapters/images/UI_Screen/admin/user_mask.png}
+  \caption{学習者・投稿者管理画面（個人情報を伏せた表示）}
+  \label{fig:ad_user_mask}
 \end{figure}
 
-図\ref{fig:teacher_handcreate1}から図\ref{fig:teacher_handcreate5}は、投稿者が手順に沿って投稿内容を入力する画面である。タイトル、手順、カテゴリの順に入力し、その後、投稿内容確認画面で内容の確認や修正を行う。公開完了後は、投稿管理画面または新規投稿画面へ進むことができる。
+
+\subsubsection{利用者詳細画面}
+
+利用者詳細画面を図\ref{fig:ad_user_details}に示す。
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[t]{0.31\linewidth}
+
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/teacher/handcreate1.png}
-    \caption{タイトル入力画面}
-    \label{fig:teacher_handcreate1}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/user_detail.png}
+    \caption{利用者詳細画面}
+    \label{fig:ad_user_detail}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[t]{0.31\linewidth}
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/teacher/handcreate2.png}
-    \caption{手順入力画面}
-    \label{fig:teacher_handcreate2}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/user_action.png}
+    \caption{利用者への対応画面}
+    \label{fig:ad_user_action}
+  \end{subfigure}
+
+  \caption{利用者詳細画面}
+  \label{fig:ad_user_details}
+\end{figure}
+
+図\ref{fig:ad_user_detail}は、利用者1人の詳細情報を確認する画面である。ID・本名・電話番号・生年月日・種別・権限・登録日・利用状態と、投稿数・通報された数・警告の数、これまでの対応履歴が表示される。
+
+図\ref{fig:ad_user_action}は、利用者詳細画面で「対応する…」をクリックすると表示される画面である。「警告を送る」「投稿を制限する」「アカウントを停止する」から対応を選択することができる。
+
+
+\subsubsection{問い合わせ管理画面}
+
+図\ref{fig:ad_inquiry}は、利用者から届いた問い合わせの一覧を確認する画面である。「未対応」「対応中」「対応済み」「すべて」で絞り込むことができる。一覧には内容・送った人・種類・受信日時・状態が表示され、行をクリックすると問い合わせ詳細画面へ遷移する。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/inquiry.png}
+  \caption{問い合わせ管理画面}
+  \label{fig:ad_inquiry}
+\end{figure}
+
+
+\subsubsection{問い合わせ詳細画面}
+
+問い合わせ詳細画面を図\ref{fig:ad_inquiry_details}に示す。
+
+\begin{figure}[H]
+  \centering
+
+  \begin{subfigure}[t]{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/inquiry_detail.png}
+    \caption{問い合わせ詳細画面}
+    \label{fig:ad_inquiry_detail}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[t]{0.31\linewidth}
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/teacher/handcreate3.png}
-    \caption{カテゴリ選択画面}
-    \label{fig:teacher_handcreate3}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/inquiry_send.png}
+    \caption{回答の確認画面}
+    \label{fig:ad_inquiry_send}
   \end{subfigure}
 
-  \vspace{5mm}
-
-  \begin{subfigure}[t]{0.45\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/teacher/handcreate4.png}
-    \caption{投稿内容確認画面}
-    \label{fig:teacher_handcreate4}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.45\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/teacher/handcreate5.png}
-    \caption{公開完了画面}
-    \label{fig:teacher_handcreate5}
-  \end{subfigure}
-  \caption{手動投稿作成画面}
-  \label{fig:teacher_handcreate}
+  \caption{問い合わせ詳細画面}
+  \label{fig:ad_inquiry_details}
 \end{figure}
 
-\subsubsection{マイページ画面}
+図\ref{fig:ad_inquiry_detail}は、問い合わせ1件の内容を確認し、回答する画面である。送った人・種類・受信日時・状態と、問い合わせの内容が表示される。返信メッセージ、運営のみが閲覧できる対応内容の記録、通知方法（アプリ通知・メール・両方）を入力し、「回答を送る」をクリックすると回答できる。回答が不要な場合は「確認のみで完了」をクリックする。また、「対応中にする」をクリックすると、ほかの管理者に対応中であることを知らせることができる。
 
-図\ref{fig:teacher_mypage}は、投稿者のマイページ画面である。上部には「ありがとうの木」のセクションが表示され、木のレベルや名称を確認することができる。木のイラストは、獲得したポイント数に応じて自動で変化する。プロフィール欄には現在のランク、ポイント、順位などの情報が表示され、鉛筆マークをタップするとプロフィール編集画面へ遷移する。
+図\ref{fig:ad_inquiry_send}は、「回答を送る」をクリックすると表示される確認画面である。送る内容と送る相手、通知方法が表示される。「送る」をクリックすると回答が届き、問い合わせの状態が「対応済み」になる。
+
+
+% =================================
+\subsection{投稿管理画面}
+% =================================
+
+\subsubsection{投稿管理（パネル一覧）画面}
+
+図\ref{fig:ad_post_panel}は、ホーム画面で「投稿管理」をクリックすると表示される画面である。「投稿管理」と「通報管理」のパネルが配置され、未対応がある場合は件数が表示される。クリックするとそれぞれの画面へ遷移する。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/mypage.png}
-  \caption{投稿者マイページ画面}
-  \label{fig:teacher_mypage}
-\end{figure}
-
-\subsubsection{プロフィール編集画面}
-
-図\ref{fig:teacher_profile}は、投稿者のプロフィールを編集する画面である。アイコン、ニックネーム、自己紹介、実績などを入力・変更することができる。
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/profile.png}
-  \caption{投稿者プロフィール編集画面}
-  \label{fig:teacher_profile}
-\end{figure}
-
-\subsubsection{投稿管理画面}
-
-図\ref{fig:teacher_postManage}は、自分が投稿した内容を一覧で確認できる画面である。投稿は人気順または新しい順に並べ替えることができる。各投稿をタップすると、投稿の削除や非公開などの操作を行うことができる。
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/postManage.png}
-  \caption{投稿管理画面}
-  \label{fig:teacher_postManage}
-\end{figure}
-
-\subsubsection{質問画面}
-
-図\ref{fig:teacher_question}は、学習者から送られた質問を一覧で確認できる画面である。未回答の質問と回答済みの質問が分けて表示され、質問をタップすると回答を入力する画面へ遷移する。
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/question.png}
-  \caption{質問一覧画面}
-  \label{fig:teacher_question}
-\end{figure}
-
-図\ref{fig:teacher_answer}は、学習者から届いた質問に回答する画面である。質問内容を確認し、回答を入力して送信することができる。
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/teacher/answer.png}
-  \caption{質問回答画面}
-  \label{fig:teacher_answer}
+  \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/post_panel.png}
+  \caption{投稿管理（パネル一覧）画面}
+  \label{fig:ad_post_panel}
 \end{figure}
 
 \subsection{管理者画面}
@@ -593,221 +593,190 @@
 % 画像はすべて images/UI_Screen/manager/ 内に配置する。
 \subsubsection{ホーム画面}
 
-図\ref{fig:manager_home}は、ログイン後に最初に表示される管理者向けのホーム画面である。対応が必要な件数と主要指標を一覧で確認でき、縦スクロールによって画面下部の推移グラフも確認することができる。画面上部には画面タイトルとログイン中のユーザー名（システム管理者）が表示され、ユーザー名をタップするとアカウント情報を確認できる。「対応待ち」エリアには、AI要確認・通報・問い合わせの未対応件数が3枚のカードで表示される。件数が0件より多い場合は赤色で強調され、カード内の「開いて対応」をタップすると該当する一覧画面へ遷移する。「主要指標」エリアには全投稿数や今月の投稿数が表示される。画面下部のタブバーでは、ホーム・投稿・通報・問い合わせ・メニューの5つの画面を切り替えることができる。投稿・通報・問い合わせのアイコンには未対応件数がバッジで表示され、現在表示中のタブは青色で強調される。
+図\ref{fig:ad_post}は、投稿の一覧を確認する画面である。投稿は審査なしで公開され、AIがすべての投稿を解析し、不適切な内容やキーワードにタグを付ける。「要対応」「注意」「確認」「確認済み」「すべて」で絞り込むことができる。一覧には投稿のタイトル・ID・AIの判定とその理由・投稿者・日時・通報数が表示され、行をクリックすると投稿詳細画面へ遷移する。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/manager/home.png}
-  \caption{管理者ホーム画面}
-  \label{fig:manager_home}
+  \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/post.png}
+  \caption{投稿管理画面}
+  \label{fig:ad_post}
 \end{figure}
 
 
-\subsubsection{投稿対応画面}
+\subsubsection{投稿詳細画面}
 
-図\ref{fig:manager_post1}は、下部タブの「投稿」をタップすると表示される投稿管理画面である。AIが解析した投稿を優先度ごとに確認することができ、投稿をタップすると対応詳細画面へ遷移する。「要対応」「注意」「確認」のタブを切り替えることで、該当する投稿を確認できる。各タブには該当件数が表示され、収まらない分は横スクロールで表示される。投稿リストには、タイトル、投稿ID、AI判定ラベル、判定理由、投稿者名、投稿日時、通報件数が表示される。
-
-図\ref{fig:manager_post2}は、投稿の対応詳細画面である。画面上部には「AI：要対応」などのラベルで投稿全体の総合判定が表示される。検出項目リストには、AIが検出した問題が重要度（要対応・注意）、問題の種類、該当箇所、指摘内容とともに表示される。判定の根拠になった語句は黄色のタグで表示される。
+投稿詳細画面を図\ref{fig:ad_post_details}に示す。
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[t]{0.45\linewidth}
+
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/post1.png}
-    \caption{投稿管理画面}
-    \label{fig:manager_post1}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/post_detail.png}
+    \caption{投稿詳細画面}
+    \label{fig:ad_post_detail}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[t]{0.45\linewidth}
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/post2.png}
-    \caption{投稿対応詳細画面}
-    \label{fig:manager_post2}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/post_action.png}
+    \caption{投稿への対応画面}
+    \label{fig:ad_post_action}
   \end{subfigure}
-  \caption{投稿対応画面}
-  \label{fig:manager_post}
+
+  \caption{投稿詳細画面}
+  \label{fig:ad_post_details}
 \end{figure}
+
+図\ref{fig:ad_post_detail}は、投稿1件の内容とAIの判定を確認する画面である。AIチェック欄には、指摘ごとのレベル・場所・内容と判定キーワードが表示される。投稿内容では、問題のある言葉が強調して表示される。また、通報の情報と投稿者の過去の投稿数が表示される。問題がなければ「公開を続ける」を、対応が必要であれば「対応する…」をクリックする。
+
+図\ref{fig:ad_post_action}は、投稿詳細画面で「対応する…」をクリックすると表示される画面である。「公開を続ける」「修正を依頼する」「投稿者に警告を送る」「非公開にする」「削除する」から対応を選択することができる。削除した投稿はもとに戻すことができない。
 
 
 \subsubsection{通報管理画面}
 
-図\ref{fig:manager_report1}は、下部タブの「通報」をタップすると表示される通報管理画面である。ユーザーから届いた通報を状態ごとに確認でき、通報をタップすると詳細画面へ遷移する。「未対応」「対応済み」「すべて」のタブを切り替えることができ、各タブには該当件数が表示される。収まらない分は横スクロールで表示される。通報リストには、通報理由、通報対象のタイトルと投稿ID、通報した人、通報日時、状態（未対応など）が表示される。
-
-図\ref{fig:manager_report2}は、通報の詳細画面である。画面上部には、通報の理由（迷惑行為・宣伝など）、通報した人、通報日時、状態が表示される。また、通報者が入力した内容と、通報された投稿のタイトル、投稿ID、本文が表示される。画面下部の「問題なし」をタップすると、通報を問題なしとして処理し、一覧へ戻る。「対応する」をタップすると、投稿の非公開や投稿者への連絡などの対応を選ぶ画面へ遷移する。
+図\ref{fig:ad_report}は、利用者から届いた通報の一覧を確認する画面である。「未対応」「対応済み」「すべて」で絞り込むことができる。一覧には通報の理由・対象・対象の種類（投稿またはコメント）・通報した人・日時・状態が表示され、行をクリックすると通報詳細画面へ遷移する。
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[t]{0.45\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/report1.png}
-    \caption{通報管理画面}
-    \label{fig:manager_report1}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.45\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/report2.png}
-    \caption{通報詳細画面}
-    \label{fig:manager_report2}
-  \end{subfigure}
+  \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/report.png}
   \caption{通報管理画面}
-  \label{fig:manager_report}
+  \label{fig:ad_report}
 \end{figure}
 
 
-\subsubsection{お問い合わせ管理画面}
+\subsubsection{通報詳細画面}
 
-図\ref{fig:manager_question}は、下部タブの「問い合わせ」をタップすると表示されるお問い合わせ管理画面である。ユーザーから届いた問い合わせを状態ごとに確認でき、問い合わせをタップすると詳細画面へ遷移する。画面上部には画面タイトルとログイン中のユーザー名が表示される。「未対応」「対応中」「対応済み」のタブを切り替えることができ、各タブには該当件数が表示される。収まらない分は横スクロールで表示される。問い合わせリストには、件名、送った人（ユーザーID）、種類（使い方・広告・提携など）、受信日時、状態（未対応など）が表示される。
-
-図\ref{fig:manager_question2}は、問い合わせの詳細画面である。画面上部には、送った人、種類、受信日時、状態が表示される。問い合わせの内容として、ユーザーが入力した内容が表示される。回答エリアでは、返信メッセージと対応内容（運営の記録）を入力できる。返信メッセージはユーザーへ送信され、対応内容は運営側の記録として保存される。画面下部の「確認のみで完了」をタップすると、返信せずに対応済みにして一覧へ戻る。「回答を送る」をタップすると、入力した返信メッセージをユーザーへ送信する。
+通報詳細画面を図\ref{fig:ad_report_details}に示す。
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[t]{0.45\linewidth}
+
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/question.png}
-    \caption{お問い合わせ管理画面}
-    \label{fig:manager_question}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/report_detail.png}
+    \caption{通報詳細画面}
+    \label{fig:ad_report_detail}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[t]{0.45\linewidth}
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/question2.png}
-    \caption{お問い合わせ詳細画面}
-    \label{fig:manager_question2}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/report_action.png}
+    \caption{通報への対応画面}
+    \label{fig:ad_report_action}
   \end{subfigure}
-  \caption{お問い合わせ管理画面}
-  \label{fig:manager_questions}
+
+  \caption{通報詳細画面}
+  \label{fig:ad_report_details}
 \end{figure}
 
+図\ref{fig:ad_report_detail}は、通報1件の内容を確認する画面である。通報の理由・通報した人・状態、通報の内容、対象の投稿またはコメントの本文、これまでの対応履歴が表示される。「投稿管理で開く」をクリックすると、対象の投稿の投稿詳細画面へ遷移する。問題がなければ「問題なし」を、対応が必要であれば「対応する…」をクリックする。
 
-\subsubsection{メニュー画面}
+図\ref{fig:ad_report_action}は、通報詳細画面で「対応する…」をクリックすると表示される画面である。「投稿者に警告を送る」「修正を依頼する」「非公開にする」「削除する」から対応を選択することができる。対応の結果は通報した人に届き、対象の投稿にも反映される。
 
-図\ref{fig:manager_menu}は、下部タブの「メニュー」をタップすると表示される画面である。ホーム・投稿・通報・問い合わせ以外の管理機能へ移動することができる。画面上部には画面タイトルとログイン中のユーザー名が表示される。メニューリストには「利用者管理」「お知らせ・イベント」「広告・タイアップ」「統計・ランキング」「バージョン管理」「権限設定」が表示され、各項目をタップすると、それぞれの管理画面へ遷移する。「開発者用の表示にもどす」をタップすると、開発者向けの表示へ切り替えることができる。アプリ情報にはアプリ名とバージョンが表示される。画面下部のタブバーでは「メニュー」タブが青色で強調され、投稿・通報・問い合わせのアイコンには未対応件数がバッジで表示される。
+
+% =================================
+\subsection{詳細管理画面}
+% =================================
+
+\subsubsection{詳細管理（パネル一覧）画面}
+
+図\ref{fig:ad_detail_panel}は、ホーム画面で「詳細管理」をクリックすると表示される画面である。「お知らせ・イベント管理」「広告・タイアップ」「バージョン管理」のパネルが配置され、登録件数や現在のバージョンが表示される。クリックするとそれぞれの画面へ遷移する。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/manager/menue.png}
-  \caption{メニュー画面}
-  \label{fig:manager_menu}
-\end{figure}
-
-
-\subsubsection{利用者管理画面}
-
-図\ref{fig:manager_user1}は、メニュー画面の「利用者管理」をタップすると表示される利用者管理画面である。利用者を検索・絞り込みで探すことができ、利用者をタップすると詳細画面へ遷移する。画面上部には画面タイトルとログイン中のユーザー名が表示され、左上の「＜」をタップするとメニュー画面へ戻る。ニックネームを入力して「検索」をタップすると、一致する利用者だけが一覧に表示される。「すべて」「学習者」「投稿者」などのタブを切り替えることができ、各タブには該当人数が表示される。収まらない分は横スクロールで表示される。利用者リストには、ニックネーム、利用者ID、種別、電話番号、投稿数、通報数、利用状態が表示される。
-
-図\ref{fig:manager_user2}は、利用者の詳細画面である。画面上部には、ID、本名、電話番号、生年月日、種別、権限、登録日、利用状態が表示される。利用状況として、投稿数、通報された数、警告数が表示される。画面下部の「対応する」をタップすると、対応処理画面へ遷移する。
-
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}[t]{0.45\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/user1.png}
-    \caption{利用者管理画面}
-    \label{fig:manager_user1}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.45\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/user2.png}
-    \caption{利用者詳細画面}
-    \label{fig:manager_user2}
-  \end{subfigure}
-  \caption{利用者管理画面}
-  \label{fig:manager_users}
+  \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/detail_panel.png}
+  \caption{詳細管理（パネル一覧）画面}
+  \label{fig:ad_detail_panel}
 \end{figure}
 
 
 \subsubsection{お知らせ・イベント管理画面}
 
-図\ref{fig:manager_info}は、メニュー画面の「お知らせ・イベント」をタップすると表示されるお知らせ・イベント管理画面である。これまでに作成したお知らせやイベントを確認でき、「新しく作る」をタップすると作成画面へ遷移する。画面上部には画面タイトルとログイン中のユーザー名（システム管理者）が表示され、左上の「＜」をタップするとメニュー画面へ戻る。お知らせ・イベントリストには、タイトル、種類、掲載期間、閲覧数、公開状態が表示される。画面下部の「新しく作る」をタップすると、お知らせ作成画面へ遷移する。
-
-図\ref{fig:manager_info2}は、お知らせ・イベントの作成画面である。種類は「お知らせ」「イベント」「コラム」「公式情報」から1つ選択する。タイトルと本文を入力し、画像は「ファイルの選択」から任意で追加できる。また、掲載期間などの公開設定も入力する。画面下部の「確認する」をタップすると、入力内容の確認画面へ遷移する。
+お知らせ・イベント管理画面を図\ref{fig:ad_notices}に示す。
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[t]{0.45\linewidth}
+
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/info.png}
-    \caption{お知らせ・イベント一覧画面}
-    \label{fig:manager_info}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/notice.png}
+    \caption{お知らせ・イベント管理画面}
+    \label{fig:ad_notice}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[t]{0.45\linewidth}
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/info2.png}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/notice_new.png}
     \caption{お知らせ・イベント作成画面}
-    \label{fig:manager_info2}
+    \label{fig:ad_notice_new}
   \end{subfigure}
+
   \caption{お知らせ・イベント管理画面}
-  \label{fig:manager_infos}
+  \label{fig:ad_notices}
 \end{figure}
 
+図\ref{fig:ad_notice}は、アプリのホームに表示するお知らせ・イベント・コラム・公式情報の一覧を確認する画面である。一覧には種類・届ける相手・掲載期間・閲覧数・状態（公開中・予約・下書き）が表示される。「新しく作る」をクリックすると、お知らせ・イベント作成画面へ遷移する。
 
-\subsubsection{広告・タイアップ管理画面}
+図\ref{fig:ad_notice_new}は、お知らせやイベントを新しく作成する画面である。種類（お知らせ・イベント・コラム・公式情報）、タイトル、本文、画像、掲載開始と掲載終了の日時、届ける相手（全員・学習者・投稿者）、公開設定（公開・下書き）を入力する。開始日時が先の日付の場合は予約となる。「確認する」をクリックして内容を確認したあとに配信すると、相手にアプリの通知が届く。
 
-図\ref{fig:manager_ad}は、メニュー画面の「広告・タイアップ」をタップすると表示される広告・タイアップ管理画面である。登録済みの広告やタイアップを確認でき、「新しく登録」をタップすると登録画面へ遷移する。画面上部には画面タイトルとログイン中のユーザー名（システム管理者）が表示され、左上の「＜」をタップするとメニュー画面へ戻る。広告・タイアップリストには、企業名、認定ラベル、掲載内容、掲載期間、掲載状態（掲載中・終了など）が表示される。画面下部の「新しく登録」をタップすると、登録画面へ遷移する。
 
-図\ref{fig:manager_ad2}は、広告・タイアップの登録画面である。入力欄に企業名、掲載内容、リンク先（URL）を入力する。掲載期間は、掲載開始日と掲載終了日を日付で選択する。画面下部の「確認する」をタップすると、入力内容の確認画面へ遷移する。
+\subsubsection{広告・タイアップ画面}
+
+広告・タイアップ画面を図\ref{fig:ad_ads}に示す。
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[t]{0.45\linewidth}
+
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/ad.png}
-    \caption{広告・タイアップ一覧画面}
-    \label{fig:manager_ad}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/ad.png}
+    \caption{広告・タイアップ画面}
+    \label{fig:ad_ad}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[t]{0.45\linewidth}
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/ad2.png}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/ad_new.png}
     \caption{広告・タイアップ登録画面}
-    \label{fig:manager_ad2}
+    \label{fig:ad_ad_new}
   \end{subfigure}
-  \caption{広告・タイアップ管理画面}
-  \label{fig:manager_ads}
+
+  \caption{広告・タイアップ画面}
+  \label{fig:ad_ads}
 \end{figure}
 
+図\ref{fig:ad_ad}は、協力企業の広告・タイアップの一覧を確認する画面である。一覧には企業名・認定マークの有無・掲載内容・掲載場所・掲載期間・状態が表示される。「新しく登録」をクリックすると、広告・タイアップ登録画面へ遷移する。
 
-\subsubsection{統計・ランキング画面}
-
-図\ref{fig:manager_analize}は、メニュー画面の「統計・ランキング」をタップすると表示される画面である。利用状況や投稿数の推移を、数値とグラフで確認することができる。縦スクロールによって画面下部のグラフも確認できる。画面上部には画面タイトルとログイン中のユーザー名が表示され、左上の「＜」をタップするとメニュー画面へ戻る。指標カードには、登録者数（今月の増加数）、月間の利用者数（先月比）、1日の利用者数（直近7日の平均）、今月の投稿数（AI指摘の割合）が表示される。「投稿数・日別」グラフには日ごとの投稿数の推移が折れ線グラフで表示され、「投稿数・月別」グラフには月ごとの投稿数が棒グラフで表示される。画面下部のタブバーでは、投稿・通報・問い合わせのアイコンに未対応件数がバッジで表示される。
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\linewidth]{chapters/images/UI_Screen/manager/analize.png}
-  \caption{統計・ランキング画面}
-  \label{fig:manager_analize}
-\end{figure}
+図\ref{fig:ad_ad_new}は、広告・タイアップを新しく登録する画面である。企業名・掲載内容・リンク先・掲載期間・掲載場所（投稿に掲載・専用ページ）を入力する。投稿に掲載する場合は、掲載する投稿を既存の投稿から選択する。認定マークを付けると、投稿者ページと掲載先に「認定」マークが表示される。「確認する」をクリックして内容を確認したあとに登録する。
 
 
 \subsubsection{バージョン管理画面}
 
-図\ref{fig:manager_ver1}は、メニュー画面の「バージョン管理」をタップすると表示されるバージョン管理画面である。現在のバージョンとこれまでの履歴を確認でき、「新しいバージョンを登録」をタップすると登録画面へ遷移する。画面上部には画面タイトルとログイン中のユーザー名が表示され、左上の「＜」をタップするとメニュー画面へ戻る。現在のバージョンには、公開中のバージョン番号、公開日、変更内容の要約が表示される。「これまでのバージョン」リストには、バージョン番号、公開日、変更内容の要約が新しい順に表示され、最新のバージョンには「最新」ラベルが表示される。
-
-図\ref{fig:manager_ver2}は、新しいバージョンの登録画面である。画面上部には現在のバージョンが表示され、新しい番号との違いを確認できる。入力欄にバージョン番号と変更内容を入力し、更新ファイルは「ファイルの選択」から追加する。画面下部の「確認して登録」をタップすると、入力内容を確認したうえで新しいバージョンとして登録する。
+バージョン管理画面を図\ref{fig:ad_versions}に示す。
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[t]{0.45\linewidth}
+
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/ver1.png}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/version.png}
     \caption{バージョン管理画面}
-    \label{fig:manager_ver1}
+    \label{fig:ad_version}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[t]{0.45\linewidth}
+  \begin{subfigure}[t]{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/manager/ver2.png}
-    \caption{新バージョン登録画面}
-    \label{fig:manager_ver2}
+    \includegraphics[width=\linewidth]{chapters/images/UI_Screen/admin/version_new.png}
+    \caption{バージョン登録画面}
+    \label{fig:ad_version_new}
   \end{subfigure}
+
   \caption{バージョン管理画面}
-  \label{fig:manager_versions}
+  \label{fig:ad_versions}
 \end{figure}
 
+図\ref{fig:ad_version}は、アプリのバージョンを管理する画面である。現在のバージョンと公開日・変更内容、これまでのバージョンの履歴が表示される。「新しいバージョンを登録（リリース）」をクリックすると、バージョン登録画面へ遷移する。
 
 \subsubsection{権限設定画面}
 
