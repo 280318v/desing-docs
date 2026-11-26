@@ -1,4 +1,7 @@
 % !TEX root = ../G-design.tex
+% 機能概要（ユーザ共通機能・会員共通機能・学習者機能）
+
+%======================================================================
 \section{機能概要}\label{sec:overview}
 \subsection{ユーザ共通機能}\label{subsec:common}
 %======================================================================
@@ -10,11 +13,12 @@
 %----------------------------------------------------------------------
 アプリ利用者は, 最初に「ゲスト利用」「ログイン」「新規会員登録」のいずれかを選択する.
 ゲスト利用を選択した場合の流れを図\ref{fig:guest}に示す.
-なお, ログインおよび新規会員登録については, \ref{subsec:member}で詳しく説明する.
+利用者が初期画面でゲスト利用を選択すると, システムはホーム画面を生成し, 利用者はホーム画面に遷移する.
+なお, ログインおよび新規会員登録については, \ref{subsubsec:register}および\ref{subsubsec:login}で詳しく説明する.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.6\linewidth]{chapters/images/guest.png}
+  \includegraphics[width=0.75\linewidth]{chapters/images/guest.png}
   \caption{初回選択（ゲスト利用）のアクティビティ図}
   \label{fig:guest}
 \end{figure}
@@ -22,29 +26,82 @@
 %----------------------------------------------------------------------
 \subsubsection{チュートリアル機能}\label{subsec:tutorial}
 %----------------------------------------------------------------------
-利用者が初めてみる画面に遷移した場合, その画面のチュートリアルが作動する.
+利用者が初めてある画面に遷移した場合, その画面のチュートリアルが作動する.
 すべてのチュートリアルにはスキップ機能を設け, スキップを選択した場合は, その画面のチュートリアルを終了したものとして扱う.
 また, チュートリアルはホーム画面の「ヘルプ」から「チュートリアル」ボタンを選択することで, いつでも見返すことができる.
 
-図\ref{fig:tutorial1}に, ホーム画面から検索を経て投稿を閲覧するまでのチュートリアルの流れを示す.
+チュートリアルを表示する画面と, 表示のきっかけとなる操作を表\ref{tab:tutorial}に示す.
+いずれの画面も, 利用者が表\ref{tab:tutorial}の操作を初めて行うと, システムがその画面のチュートリアルを生成し,
+利用者がチュートリアルを閲覧するという共通の流れである.
+各画面のチュートリアルの流れを図\ref{fig:tutorial}に示す.
 
-図\ref{fig:tutorial2}に, ヘルプ画面および設定画面のチュートリアルの流れを示す.
-
-\begin{figure}[H]
+\begin{table}[htbp]
   \centering
-  \begin{minipage}[t]{0.48\linewidth}
+  \caption{チュートリアルを表示する画面}
+  \label{tab:tutorial}
+  \begin{tabular}{lll}
+    \toprule
+    画面 & きっかけとなる操作 & 図 \\
+    \midrule
+    ホーム画面 & ホーム画面を表示する & 図\ref{fig:tutorial-home} \\
+    検索画面 & 検索画面を選択する & 図\ref{fig:tutorial-search} \\
+    投稿一覧（検索結果）画面 & 検索を行う & 図\ref{fig:tutorial-postlist} \\
+    投稿閲覧画面 & 投稿コンテンツを選択する & 図\ref{fig:tutorial-postview} \\
+    ヘルプ画面 & ヘルプボタンを選択する & 図\ref{fig:tutorial-help} \\
+    設定画面 & 設定画面を選択する & 図\ref{fig:tutorial-settings} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/tutorial1.png}
-    \caption{利用者チュートリアル1（ホーム・検索・投稿閲覧）}
-    \label{fig:tutorial1}
-  \end{minipage}
+    \includegraphics[width=\linewidth]{chapters/images/tutorial_home.png}
+    \caption{ホーム画面}
+    \label{fig:tutorial-home}
+  \end{subfigure}
   \hfill
-  \begin{minipage}[t]{0.48\linewidth}
+  \begin{subfigure}[t]{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{chapters/images/tutorial2.png}
-    \caption{利用者チュートリアル2（ヘルプ・設定）}
-    \label{fig:tutorial2}
-  \end{minipage}
+    \includegraphics[width=\linewidth]{chapters/images/tutorial_search.png}
+    \caption{検索画面}
+    \label{fig:tutorial-search}
+  \end{subfigure}
+
+  \vspace{3mm}
+
+  \begin{subfigure}[t]{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/tutorial_postlist.png}
+    \caption{投稿一覧（検索結果）画面}
+    \label{fig:tutorial-postlist}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/tutorial_postview.png}
+    \caption{投稿閲覧画面}
+    \label{fig:tutorial-postview}
+  \end{subfigure}
+
+  \vspace{3mm}
+
+  \begin{subfigure}[t]{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/tutorial_help.png}
+    \caption{ヘルプ画面}
+    \label{fig:tutorial-help}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{chapters/images/tutorial_settings.png}
+    \caption{設定画面}
+    \label{fig:tutorial-settings}
+  \end{subfigure}
+  \caption{チュートリアル機能のアクティビティ図}
+  \label{fig:tutorial}
 \end{figure}
 
 %----------------------------------------------------------------------
@@ -62,26 +119,36 @@
 
 \paragraph{文字/音声検索}
 図\ref{fig:search-text}に文字/音声検索の流れを示す.
+利用者が検索画面を選択すると, システムは検索画面を生成する.
+利用者が検索画面で文字または音声でキーワードを入力し, 「さがす」ボタンを選択すると,
+システムは投稿を検索し, 検索結果（投稿一覧）画面を生成して表示する.
 
 \paragraph{カテゴリ検索}
 図\ref{fig:search-category}にカテゴリ検索の流れを示す.
+利用者が検索画面でカテゴリを選択すると, システムはそのカテゴリに該当する投稿を集めた
+カテゴリ検索結果（投稿一覧）画面を生成して表示する.
 
 \paragraph{AI検索}
 図\ref{fig:search-ai}にAI検索の流れを示す.
+利用者が検索画面で文字または音声で入力し, 「AI検索」ボタンを選択すると,
+システムは入力内容を検索用のキーワードに変換したうえで投稿を検索し,
+AI検索結果（投稿一覧）画面を生成して表示する.
 
 \paragraph{再検索（YouTubeで検索）}
 図\ref{fig:research}に再検索の流れを示す.
+投稿一覧の最後に表示される「YouTubeで検索」を利用者が選択すると,
+システムは同じキーワードでYouTubeを検索し, YouTubeの検索結果画面へ遷移する.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \begin{minipage}[t]{0.35\linewidth}
+  \begin{minipage}[t]{0.48\linewidth}
     \centering
     \includegraphics[width=\linewidth]{chapters/images/search_text.png}
     \caption{文字/音声検索機能のアクティビティ図}
     \label{fig:search-text}
   \end{minipage}
   \hfill
-  \begin{minipage}[t]{0.35\linewidth}
+  \begin{minipage}[t]{0.48\linewidth}
     \centering
     \includegraphics[width=\linewidth]{chapters/images/search_category.png}
     \caption{カテゴリ検索機能のアクティビティ図}
@@ -89,21 +156,18 @@
   \end{minipage}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \begin{minipage}[t]{0.35\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{chapters/images/search_ai.png}
-    \caption{AI検索機能のアクティビティ図}
-    \label{fig:search-ai}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[t]{0.35\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{chapters/images/research_youtube.png}
-    \caption{再検索機能のアクティビティ図}
-    \label{fig:research}
-  \end{minipage}
+  \includegraphics[width=0.5\linewidth]{chapters/images/search_ai.png}
+  \caption{AI検索機能のアクティビティ図}
+  \label{fig:search-ai}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.75\linewidth]{chapters/images/research_youtube.png}
+  \caption{再検索機能のアクティビティ図}
+  \label{fig:research}
 \end{figure}
 
 %----------------------------------------------------------------------
@@ -116,8 +180,12 @@
 一覧は上下のスワイプ操作で閲覧でき, 最後までスワイプすると, YouTubeで再検索する選択肢が表示される.
 
 図\ref{fig:post-view}に投稿閲覧機能の流れを示す.
+利用者が検索を行うと, システムは投稿一覧画面を生成する.
+利用者が並び順を選択すると, システムは選択された順に投稿を並べ替え, 投稿一覧画面を再生成する.
+利用者は一覧をスワイプして閲覧し, 気になる投稿を選択して閲覧する.
+一覧を最後までスワイプした場合は, 「YouTubeで検索」を表示する.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.6\linewidth]{chapters/images/post_view.png}
   \caption{投稿閲覧機能のアクティビティ図}
@@ -128,12 +196,16 @@
 \subsubsection{投稿通報機能}\label{subsec:report}
 %----------------------------------------------------------------------
 閲覧中の投稿に誤情報や不適切な内容が含まれている場合に, 運営へ通報する機能である.
-利用者は, 投稿の下部に「♥」ボタンと並んで表示される通報ボタンを押し, 通報理由を選択して詳しい内容を記述する.
+利用者は, 投稿の下部に$\heartsuit$ボタンと並んで表示される通報ボタンを押し, 通報理由を選択して詳しい内容を記述する.
 通報された投稿は, 管理者が内容を確認して対応する.
 
 図\ref{fig:report}に投稿通報機能の流れを示す.
+利用者が通報ボタンを選択すると, システムは通報画面を生成する.
+利用者が通報理由を選択・記述すると, システムは確認画面を生成する.
+確認画面で利用者が「送信」を選択した場合, システムは通報内容を記録し, 通報完了画面を生成する.
+「キャンセル」を選択した場合は, 通報せずに投稿閲覧画面へ戻る.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.6\linewidth]{chapters/images/report.png}
   \caption{投稿通報機能のアクティビティ図}
@@ -146,11 +218,13 @@
 利用者が, 画面表示・操作支援および通知に関する設定を行う機能である.
 設定できる項目を表\ref{tab:settings}に示す.
 
-\begin{table}[H]
+\begin{table}[htbp]
   \centering
   \caption{設定項目}
   \label{tab:settings}
   \begin{tabular}{ll}
+    \hline
+    分類 & 設定項目 \\
     \hline
     画面表示・操作支援 & 文字・ボタンの大きさ \\
                        & 画面の配色 \\
@@ -163,10 +237,15 @@
 \end{table}
 
 図\ref{fig:act-settings}に設定機能の流れを示す.
+利用者が設定を選択すると, システムは設定画面を生成する.
+利用者が設定項目を変更して「保存」を選択すると, システムは利用者が会員としてログイン中かどうかを判定する.
+会員としてログイン中の場合は設定内容を保存し, 次回以降の起動時にも反映する.
+ゲストの場合は設定内容を保存せず, 現在の利用中のみ一時的に反映する.
+いずれの場合も, システムは設定を反映した画面を生成して表示する.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.5\linewidth]{chapters/images/settings.png}
+  \includegraphics[width=0.6\linewidth]{chapters/images/settings.png}
   \caption{設定機能のアクティビティ図}
   \label{fig:act-settings}
 \end{figure}
@@ -174,14 +253,16 @@
 %----------------------------------------------------------------------
 \subsubsection{問い合わせ機能}\label{subsec:inquiry}
 %----------------------------------------------------------------------
-利用者が、運営にメッセージで問い合わせる機能である.
+利用者が, 操作方法や不具合, 要望などについて, 運営にメッセージで問い合わせる機能である.
 送信された内容は, 管理者が確認して対応する.
 
 図\ref{fig:inquiry}に問い合わせ機能の流れを示す.
+利用者が問い合わせを選択すると, システムは問い合わせ画面を生成する.
+利用者がメッセージを入力して送信を選択すると, システムは問い合わせ内容を記録し, 送信完了画面を生成して表示する.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.5\linewidth]{chapters/images/inquiry.png}
+  \includegraphics[width=0.6\linewidth]{chapters/images/inquiry.png}
   \caption{問い合わせ機能のアクティビティ図}
   \label{fig:inquiry}
 \end{figure}
@@ -192,6 +273,7 @@
 協力企業などとのタイアップによる投稿を, 通常の投稿と同じ形式で表示する機能である.
 タイアップの投稿には「PR」の文字を表示し, 通常の投稿と区別できるようにする.
 
+%----------------------------------------------------------------------
 \subsection{会員共通機能}\label{subsec:member}
 %----------------------------------------------------------------------
 本項では, 会員ユーザ（投稿者・学習者）に共通する機能について述べる.
@@ -209,7 +291,24 @@
 処理の流れを図\ref{fig:register1}--\ref{fig:register3}に示す.
 図中の丸囲みの「A」「B」は結合子であり, 次の図の同じ記号へ処理が続くことを表す.
 
-\begin{figure}[H]
+\paragraph{利用目的の選択と利用規約への同意（図\ref{fig:register1}）}
+利用者が初期画面で「新規会員登録」を選択すると, システムは利用目的選択画面を生成する.
+利用者が利用目的（投稿者または学習者）を選択すると, システムは利用規約画面を生成する.
+利用者が利用規約に同意しなかった場合は初期画面に戻り, 同意した場合は新規会員登録画面が生成される.
+
+\paragraph{登録情報の入力と電話番号の確認（図\ref{fig:register2}）}
+利用者は, 名前・ニックネームを入力し, 性別・生年月日を選択して, 電話番号を入力する.
+システムは入力内容に不備がないかを確認し, 不備がある場合はエラーを表示して再入力を求める.
+不備がない場合, システムはSMSで確認用の数字を送信する.
+利用者が届いた数字を入力すると, システムはその数字が正しいかを確認し,
+誤っている場合はエラーを表示して再入力を求め, 正しい場合はパスワードを発行する.
+
+\paragraph{パスワードの確認と登録完了（図\ref{fig:register3}）}
+システムはパスワード表示画面を生成し, 利用者は表示されたパスワードを確認・保管する.
+利用者が「登録を完了する」を選択すると, システムは会員情報を登録し, 完了画面を生成する.
+完了画面で利用者がホームを選択すると, システムはホーム画面を生成し, 利用者はホーム画面に遷移する.
+
+\begin{figure}[htbp]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -226,7 +325,7 @@
   \end{minipage}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.48\linewidth]{chapters/images/register3.png}
   \caption{新規会員登録機能のアクティビティ図3（パスワード確認・登録完了）}
@@ -242,6 +341,11 @@
 パスワードを忘れた場合は, パスワードの代わりに生年月日で確認できる.
 
 図\ref{fig:login}にログイン機能の流れを示す.
+利用者が初期画面で「ログイン」を選択すると, システムはログイン画面を生成する.
+利用者がログイン画面で電話番号と確認方法（パスワードまたは生年月日）を入力し,
+ショートメッセージの送信を選択すると, システムはSMSで確認用の数字を送信する.
+利用者が届いた数字を入力して「ログイン」を選択すると, システムは入力内容が正しいかを確認する.
+誤っている場合はエラーを表示して再入力を求め, 正しい場合はログイン処理を行い, ホーム画面を生成する.
 
 %......................................................................
 \subsubsection{ログアウト機能}\label{subsubsec:logout}
@@ -250,8 +354,11 @@
 ログアウトすると, ゲストとしての利用に切り替わる.
 
 図\ref{fig:logout}にログアウト機能の流れを示す.
+利用者が設定画面で「ログアウト」を選択すると, システムはログアウト確認画面を生成する.
+確認画面で利用者が「確定」を選択した場合, システムはログアウトを実行し, ゲスト用ホーム画面を生成する.
+「キャンセル」を選択した場合は, ログアウトせずに設定画面に戻る.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -275,8 +382,11 @@
 マイページには自分のプロフィールが表示され, 変更できる項目はニックネームとパスワードとする.
 
 図\ref{fig:member-edit}に会員情報変更機能の流れを示す.
+利用者がマイページ画面で「プロフィール編集」を選択すると, システムは編集画面を生成する.
+利用者が変更内容を入力して「保存」を選択すると, システムは入力内容に不備がないかを確認する.
+不備がある場合はエラーを表示して再入力を求め, 不備がない場合は変更内容を保存し, 変更完了画面を生成する.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.48\linewidth]{chapters/images/member_edit.png}
   \caption{会員情報変更機能のアクティビティ図}
@@ -290,6 +400,10 @@
 リアクションの種類は$\heartsuit$のみとし, 送られた$\heartsuit$の数に応じて投稿者にポイントが加算される.
 
 図\ref{fig:reaction}に投稿評価機能の流れを示す.
+利用者が$\heartsuit$ボタンを選択すると, システムは利用者が会員としてログイン中かどうかを判定する.
+ログインしていない場合（ゲストの場合）は, 「新規会員登録・ログイン」画面を生成し, 会員登録またはログインを促す.
+ログイン中の場合は, リアクションを記録して投稿者のポイントを加算し, $\heartsuit$の数を更新する.
+その後, 画面上の$\heartsuit$の数の表示を更新する.
 
 %......................................................................
 \subsubsection{投稿保存機能}\label{subsubsec:post-save}
@@ -298,8 +412,13 @@
 保存した投稿は, マイページの「保存した投稿」一覧から, いつでも見返すことができる.
 
 図\ref{fig:post-save}に投稿保存機能の流れを示す.
+利用者が保存ボタンを選択すると, システムは利用者が会員としてログイン中かどうかを判定する.
+ログインしていない場合は, 「新規会員登録・ログイン」画面を生成する.
+ログイン中の場合は, 保存内容を記録して投稿を保存済みに更新し, ボタンの表示を保存済みに変更する.
+また, 利用者がマイページを選択し, さらに「保存した投稿」を選択すると,
+システムは保存した投稿の一覧を生成して表示する.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -316,6 +435,7 @@
   \end{minipage}
 \end{figure}
 
+%----------------------------------------------------------------------
 \subsection{学習者機能}\label{subsec:learner}
 %----------------------------------------------------------------------
 本項では, 利用目的として「学習者」を選択した会員ユーザが利用する機能について述べる.
@@ -329,6 +449,11 @@
 書き込みと回答は投稿のコメントとして一覧で表示され, 他の利用者も閲覧できる.
 
 図\ref{fig:reply}に返信機能の流れを示す.
+利用者がメッセージボタンを選択すると, システムはメッセージ一覧と書き込み画面を生成する.
+利用者が質問内容を入力して「送信」を選択すると, システムは利用者が会員としてログイン中かどうかを判定する.
+ログインしていない場合は, 「新規会員登録・ログイン」画面を生成し, 会員登録またはログインを促す.
+ログイン中の場合は, 書き込み内容を記録して投稿者へ通知し, コメント欄を更新して表示する.
+
 %......................................................................
 \subsubsection{質問機能}\label{subsubsec:question}
 %......................................................................
@@ -338,8 +463,12 @@
 この点で, 投稿上で誰でも閲覧できる返信機能（\ref{subsubsec:reply}）とは異なる.
 
 図\ref{fig:act-question}に質問機能の流れを示す.
+利用者が手紙ボタンを選択すると, システムは利用者が会員としてログイン中かどうかを判定する.
+ログインしていない場合は, 「新規会員登録・ログイン」画面を生成する.
+ログイン中の場合は, 質問入力画面を生成する.
+利用者が質問内容を入力して「送信」を選択すると, システムは質問を記録して投稿者へ通知し, 送信完了画面を生成する.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -364,6 +493,13 @@
 キャラクターは定型文で話しかけ, スマートフォンに関する豆知識を伝えることで, 学習意欲を高める.
 
 図\ref{fig:character}にキャラクター交流・育成機能の流れを示す.
+利用者がキャラクター画面を選択すると, システムは利用者が会員としてログイン中かどうかを判定する.
+ログインしていない場合は, 「新規会員登録・ログイン」画面を生成する.
+ログイン中の場合は, キャラクター画面を生成する.
+利用者がアイテム一覧を選択すると, システムはアイテム一覧画面を生成する.
+利用者がアイテムを選択して購入を選ぶと, システムは所持しているユニコインが足りるかを判定する.
+足りない場合は残高不足を表示してアイテム一覧画面に戻る.
+足りる場合は, ユニコインを減算してアイテムを付与し, 購入完了画面を表示する.
 
 %......................................................................
 \subsubsection{ミニゲーム機能}\label{subsubsec:minigame}
@@ -373,8 +509,11 @@
 ゲームのスコアに応じて, ユニコインを獲得できる.
 
 図\ref{fig:act-minigame}にミニゲーム機能の流れを示す.
+利用者がミニゲームルームを選択すると, システムはミニゲーム一覧画面を生成する.
+利用者がゲームを選択すると, システムはゲーム画面を生成する.
+利用者がゲームをプレイすると, システムはスコアを計算し, スコアに応じたユニコインを加算して, 結果画面を生成する.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -398,9 +537,12 @@
 支給されたユニコインは, キャラクターのアイテム購入（\ref{subsubsec:character}）に利用できる.
 
 図\ref{fig:login-bonus}にログインボーナス機能の流れを示す.
+利用者がログインすると, システムはログイン処理を行い, 本日すでにログインボーナスを受け取り済みかどうかを判定する.
+受け取っていない場合は, ユニコインを加算して受け取りを記録する.
+すでに受け取り済みの場合は, ユニコインを加算しない.
+いずれの場合も, システムはホーム画面を生成して表示する.
 
-
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.48\linewidth]{chapters/images/login_bonus.png}
   \caption{ログインボーナス機能のアクティビティ図}
