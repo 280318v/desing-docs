@@ -1,4 +1,5 @@
 % !TEX root = ../G-design.tex
+% !TEX root = ../G-design.tex
 % 機能概要（ユーザ共通機能・会員共通機能・学習者機能）
 
 %======================================================================
@@ -16,7 +17,7 @@
 利用者が初期画面でゲスト利用を選択すると, システムはホーム画面を生成し, 利用者はホーム画面に遷移する.
 なお, ログインおよび新規会員登録については, \ref{subsubsec:register}および\ref{subsubsec:login}で詳しく説明する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.75\linewidth]{chapters/images/guest.png}
   \caption{初回選択（ゲスト利用）のアクティビティ図}
@@ -53,7 +54,7 @@
   \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{subfigure}[t]{0.49\linewidth}
     \centering
@@ -139,7 +140,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 投稿一覧の最後に表示される「YouTubeで検索」を利用者が選択すると,
 システムは同じキーワードでYouTubeを検索し, YouTubeの検索結果画面へ遷移する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -156,14 +157,14 @@ AI検索結果（投稿一覧）画面を生成して表示する.
   \end{minipage}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\linewidth]{chapters/images/search_ai.png}
   \caption{AI検索機能のアクティビティ図}
   \label{fig:search-ai}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.75\linewidth]{chapters/images/research_youtube.png}
   \caption{再検索機能のアクティビティ図}
@@ -185,7 +186,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 利用者は一覧をスワイプして閲覧し, 気になる投稿を選択して閲覧する.
 一覧を最後までスワイプした場合は, 「YouTubeで検索」を表示する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{chapters/images/post_view.png}
   \caption{投稿閲覧機能のアクティビティ図}
@@ -205,7 +206,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 確認画面で利用者が「送信」を選択した場合, システムは通報内容を記録し, 通報完了画面を生成する.
 「キャンセル」を選択した場合は, 通報せずに投稿閲覧画面へ戻る.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{chapters/images/report.png}
   \caption{投稿通報機能のアクティビティ図}
@@ -243,7 +244,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 ゲストの場合は設定内容を保存せず, 現在の利用中のみ一時的に反映する.
 いずれの場合も, システムは設定を反映した画面を生成して表示する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{chapters/images/settings.png}
   \caption{設定機能のアクティビティ図}
@@ -260,7 +261,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 利用者が問い合わせを選択すると, システムは問い合わせ画面を生成する.
 利用者がメッセージを入力して送信を選択すると, システムは問い合わせ内容を記録し, 送信完了画面を生成して表示する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{chapters/images/inquiry.png}
   \caption{問い合わせ機能のアクティビティ図}
@@ -308,7 +309,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 利用者が「登録を完了する」を選択すると, システムは会員情報を登録し, 完了画面を生成する.
 完了画面で利用者がホームを選択すると, システムはホーム画面を生成し, 利用者はホーム画面に遷移する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -325,7 +326,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
   \end{minipage}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.48\linewidth]{chapters/images/register3.png}
   \caption{新規会員登録機能のアクティビティ図3（パスワード確認・登録完了）}
@@ -358,7 +359,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 確認画面で利用者が「確定」を選択した場合, システムはログアウトを実行し, ゲスト用ホーム画面を生成する.
 「キャンセル」を選択した場合は, ログアウトせずに設定画面に戻る.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -386,7 +387,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 利用者が変更内容を入力して「保存」を選択すると, システムは入力内容に不備がないかを確認する.
 不備がある場合はエラーを表示して再入力を求め, 不備がない場合は変更内容を保存し, 変更完了画面を生成する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.48\linewidth]{chapters/images/member_edit.png}
   \caption{会員情報変更機能のアクティビティ図}
@@ -418,7 +419,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 また, 利用者がマイページを選択し, さらに「保存した投稿」を選択すると,
 システムは保存した投稿の一覧を生成して表示する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -468,7 +469,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 ログイン中の場合は, 質問入力画面を生成する.
 利用者が質問内容を入力して「送信」を選択すると, システムは質問を記録して投稿者へ通知し, 送信完了画面を生成する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -513,7 +514,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 利用者がゲームを選択すると, システムはゲーム画面を生成する.
 利用者がゲームをプレイすると, システムはスコアを計算し, スコアに応じたユニコインを加算して, 結果画面を生成する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -542,7 +543,7 @@ AI検索結果（投稿一覧）画面を生成して表示する.
 すでに受け取り済みの場合は, ユニコインを加算しない.
 いずれの場合も, システムはホーム画面を生成して表示する.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.48\linewidth]{chapters/images/login_bonus.png}
   \caption{ログインボーナス機能のアクティビティ図}
